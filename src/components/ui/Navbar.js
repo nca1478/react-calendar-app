@@ -7,7 +7,7 @@ export const Navbar = () => {
         <span className="navbar-brand">Nelson</span>
 
         <button className="btn btn-outline-danger">
-          <i class="fa-solid fa-right-from-bracket"></i>
+          <i className="fa-solid fa-right-from-bracket"></i>
           <span> Salir</span>
         </button>
       </div>
