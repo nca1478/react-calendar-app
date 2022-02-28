@@ -8,7 +8,7 @@ export const Navbar = () => {
 
         <button className="btn btn-outline-danger">
           <i className="fa-solid fa-right-from-bracket"></i>
-          <span> Salir</span>
+          <span> Logout</span>
         </button>
       </div>
     </div>
