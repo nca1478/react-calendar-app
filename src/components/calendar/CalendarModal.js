@@ -22,15 +22,36 @@ const nowPlus1 = now.clone().add(1, 'hours')
 export const CalendarModal = () => {
   const [startDate, setStartDate] = useState(now.toDate())
   const [endDate, setEndDate] = useState(nowPlus1.toDate())
+  const [formValues, setFormValues] = useState({
+    title: '',
+    notes: '',
+    start: now.toDate(),
+    end: nowPlus1.toDate(),
+  })
+  const { title, notes } = formValues
+
+  const handleInputChange = ({ target }) => {
+    setFormValues({
+      ...formValues,
+      [target.name]: target.value,
+    })
+  }
 
   const closeModal = () => {}
 
   const handleStartDateChange = (e) => {
     setStartDate(e)
+    setFormValues({ ...formValues, start: e })
   }
 
   const handleEndDateChange = (e) => {
     setEndDate(e)
+    setFormValues({ ...formValues, end: e })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(formValues)
   }
 
   return (
@@ -44,7 +65,7 @@ export const CalendarModal = () => {
     >
       <h1> New Event </h1>
       <hr />
-      <form className="container">
+      <form className="container" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label>Start date and time</label>
           <DateTimePicker
@@ -73,6 +94,8 @@ export const CalendarModal = () => {
             placeholder="Event Title"
             name="title"
             autoComplete="off"
+            value={title}
+            onChange={handleInputChange}
           />
           <small id="emailHelp" className="form-text text-muted">
             Short description
@@ -86,6 +109,8 @@ export const CalendarModal = () => {
             placeholder="Notes"
             rows="5"
             name="notes"
+            value={notes}
+            onChange={handleInputChange}
           ></textarea>
           <small id="emailHelp" className="form-text text-muted">
             More Information
