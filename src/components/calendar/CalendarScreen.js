@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import moment from 'moment'
-import { Navbar } from '../ui/Navbar'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
+import { useDispatch } from 'react-redux'
+
+import { Navbar } from '../ui/Navbar'
 import { messages } from '../../helpers/messages'
-import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { CalendarEvent } from './CalendarEvent'
 import { CalendarModal } from './CalendarModal'
+import { uiOpenModal } from '../../actions/ui'
+import 'react-big-calendar/lib/css/react-big-calendar.css'
 // Date Format (es): import 'moment/locale/es', moment.locale('es')
 
 const localizer = momentLocalizer(moment)
@@ -23,16 +26,17 @@ const events = [
 ]
 
 export const CalendarScreen = () => {
+  const dispatch = useDispatch()
   const [lastView, setLastView] = useState(
     localStorage.getItem('lastView') || 'month'
   )
 
   const onDoubleClick = (e) => {
-    console.log(e)
+    dispatch(uiOpenModal())
   }
 
   const onSelectEvent = (e) => {
-    console.log(e)
+    // console.log(e)
   }
 
   const onViewChange = (e) => {
