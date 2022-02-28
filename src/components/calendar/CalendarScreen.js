@@ -5,6 +5,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar'
 import { messages } from '../../helpers/messages'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { CalendarEvent } from './CalendarEvent'
+import { CalendarModal } from './CalendarModal'
 // Date Format (es): import 'moment/locale/es', moment.locale('es')
 
 const localizer = momentLocalizer(moment)
@@ -54,6 +55,7 @@ export const CalendarScreen = () => {
   return (
     <div className="calendar-screen">
       <Navbar />
+
       <Calendar
         localizer={localizer}
         events={events}
@@ -69,6 +71,7 @@ export const CalendarScreen = () => {
           event: CalendarEvent,
         }}
       />
+      <CalendarModal />
     </div>
   )
 }
