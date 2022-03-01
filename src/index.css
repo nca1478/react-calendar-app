@@ -64,3 +64,17 @@ body {
 .react-datetime-picker__wrapper {
   border: 0px solid gray !important;
 }
+
+/* Fabs */
+.fab {
+  border-radius: 50%;
+  display: block;
+  font-size: 22px;
+  height: 70px;
+  margin-top: 24px;
+  position: fixed;
+  right: 25px;
+  bottom: 5vh;
+  width: 70px;
+  z-index: 99;
+}

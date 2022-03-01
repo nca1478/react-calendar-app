@@ -111,7 +111,7 @@ export const CalendarModal = () => {
           />
         </div>
 
-        <hr />
+        <hr className="mb-2" />
         <div className="mb-3">
           <label>Title and Notes</label>
           <input

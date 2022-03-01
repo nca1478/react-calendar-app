@@ -4,6 +4,8 @@ export const uiOpenModal = () => ({
   type: types.uiOpenModal,
 })
 
-export const uiCloseModal = () => ({
-  type: types.uiCloseModal,
-})
+export const uiCloseModal = () => {
+  return {
+    type: types.uiCloseModal,
+  }
+}
