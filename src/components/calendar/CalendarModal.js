@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import Modal from 'react-modal'
 import DateTimePicker from 'react-datetime-picker'
@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { uiCloseModal } from '../../actions/ui'
-import { eventAddNew } from '../../actions/events'
+import { eventAddNew, eventClearActiveEvent } from '../../actions/events'
 
 const customStyles = {
   content: {
@@ -24,19 +24,31 @@ Modal.setAppElement('#root')
 const now = moment().minutes(0).seconds(0).add(1, 'hours')
 const nowPlus1 = now.clone().add(1, 'hours')
 
+const initEvent = {
+  title: '',
+  notes: '',
+  start: now.toDate(),
+  end: nowPlus1.toDate(),
+}
+
 export const CalendarModal = () => {
   const dispatch = useDispatch()
   const { modalOpen } = useSelector((state) => state.ui)
+  const { activeEvent } = useSelector((state) => state.calendar)
   const [startDate, setStartDate] = useState(now.toDate())
   const [endDate, setEndDate] = useState(nowPlus1.toDate())
   const [titleValid, setTitleValid] = useState(true)
-  const [formValues, setFormValues] = useState({
-    title: '',
-    notes: '',
-    start: now.toDate(),
-    end: nowPlus1.toDate(),
-  })
+  const [notesValid, setNotesValid] = useState(true)
+  const [formValues, setFormValues] = useState(initEvent)
   const { title, notes, start, end } = formValues
+
+  useEffect(() => {
+    if (activeEvent) {
+      setStartDate(moment(activeEvent.start).toDate())
+      setEndDate(moment(activeEvent.end).toDate())
+      setFormValues(activeEvent)
+    }
+  }, [activeEvent, setFormValues])
 
   const handleInputChange = ({ target }) => {
     setFormValues({
@@ -45,8 +57,18 @@ export const CalendarModal = () => {
     })
   }
 
+  const initForm = () => {
+    setFormValues(initEvent)
+    setStartDate(now.toDate())
+    setEndDate(nowPlus1.toDate())
+    setTitleValid(true)
+    setNotesValid(true)
+  }
+
   const closeModal = () => {
     dispatch(uiCloseModal())
+    dispatch(eventClearActiveEvent())
+    initForm()
   }
 
   const handleStartDateChange = (e) => {
@@ -77,6 +99,10 @@ export const CalendarModal = () => {
       return setTitleValid(false)
     }
 
+    if (notes.trim().length === 0) {
+      return setNotesValid(false)
+    }
+
     dispatch(
       eventAddNew({
         ...formValues,
@@ -89,6 +115,7 @@ export const CalendarModal = () => {
     )
 
     setTitleValid(true)
+    setNotesValid(true)
     closeModal()
   }
 
@@ -112,7 +139,6 @@ export const CalendarModal = () => {
             className="form-control"
           />
         </div>
-
         <div className="mb-3">
           <label>End date and time</label>
           <DateTimePicker
@@ -123,7 +149,6 @@ export const CalendarModal = () => {
           />
         </div>
 
-        <hr className="mb-2" />
         <div className="mb-3">
           <label>Title and Notes</label>
           <input
@@ -135,24 +160,19 @@ export const CalendarModal = () => {
             value={title}
             onChange={handleInputChange}
           />
-          <small id="emailHelp" className="form-text text-muted">
-            Short description
-          </small>
         </div>
 
         <div className="mb-3">
+          <label>Notes</label>
           <textarea
             type="text"
-            className="form-control"
-            placeholder="Notes"
+            className={`form-control ${!notesValid && 'is-invalid'}`}
+            placeholder="Event Information"
             rows="5"
             name="notes"
             value={notes}
             onChange={handleInputChange}
           ></textarea>
-          <small id="emailHelp" className="form-text text-muted">
-            More Information
-          </small>
         </div>
 
         <div className="d-grid gap-2">

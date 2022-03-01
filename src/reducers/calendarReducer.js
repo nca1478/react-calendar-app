@@ -5,6 +5,7 @@ const initialState = {
   events: [
     {
       title: "Nelson's birthday",
+      notes: "Nelson's notes",
       start: moment().toDate(),
       end: moment().add(2, 'hours').toDate(),
       user: {
@@ -28,6 +29,12 @@ export const calendarReducer = (state = initialState, action) => {
       return {
         ...state,
         activeEvent: action.payload,
+      }
+
+    case types.eventClearActiveEvent:
+      return {
+        ...state,
+        activeEvent: null,
       }
 
     default:

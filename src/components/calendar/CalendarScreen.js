@@ -21,13 +21,12 @@ export const CalendarScreen = () => {
     localStorage.getItem('lastView') || 'month'
   )
 
-  // const onDoubleClick = (e) => {
-  //   dispatch(uiOpenModal())
-  // }
+  const onDoubleClick = () => {
+    dispatch(uiOpenModal())
+  }
 
   const onSelectEvent = (e) => {
     dispatch(eventSetActive(e))
-    dispatch(uiOpenModal())
   }
 
   const onViewChange = (e) => {
@@ -57,7 +56,7 @@ export const CalendarScreen = () => {
         endAccessor="end"
         messages={messages}
         eventPropGetter={eventStyleGetter}
-        // onDoubleClickEvent={onDoubleClick}
+        onDoubleClickEvent={onDoubleClick}
         onSelectEvent={onSelectEvent}
         onView={onViewChange}
         view={lastView}
