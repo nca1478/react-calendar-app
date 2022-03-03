@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { startLogin } from '../../actions/auth'
+import Swal from 'sweetalert2'
+import { startLogin, startRegister } from '../../actions/auth'
 import useForm from '../../hooks/useForm'
 import './LoginScreen.css'
 
@@ -23,6 +24,17 @@ export const LoginScreen = () => {
   const handleLogin = (e) => {
     e.preventDefault()
     dispatch(startLogin(lEmail, lPassword))
+  }
+
+  const handleRegister = (e) => {
+    e.preventDefault()
+
+    if (rPassword1 !== rPassword2) {
+      Swal.fire('Error', 'Passwords must be equals', 'error')
+      return false
+    }
+
+    dispatch(startRegister(rName, rEmail, rPassword1))
   }
 
   return (
@@ -60,7 +72,7 @@ export const LoginScreen = () => {
 
         <div className="col-md-6 login-form-2">
           <h3>Register</h3>
-          <form>
+          <form onSubmit={handleRegister}>
             <div className="mb-3">
               <input
                 type="text"
