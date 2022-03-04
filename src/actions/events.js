@@ -33,8 +33,9 @@ export const startEventLoading = () => {
     try {
       const resp = await fetchWithToken('events')
       const body = await resp.json()
-      console.log(body)
-      // dispatch(eventLoaded(events))
+      const events = prepareEvents(body.events)
+
+      dispatch(eventLoaded(events))
     } catch (error) {
       console.log(error)
     }
