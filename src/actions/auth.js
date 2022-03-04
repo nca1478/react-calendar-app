@@ -61,6 +61,14 @@ export const starChecking = () => {
   }
 }
 
+export const startLogout = () => {
+  return (dispatch) => {
+    localStorage.clear()
+
+    dispatch(logout())
+  }
+}
+
 export const checkingFinish = () => {
   return {
     type: types.authCheckingFinish,
@@ -71,5 +79,11 @@ export const login = (user) => {
   return {
     type: types.authLogin,
     payload: user,
+  }
+}
+
+export const logout = () => {
+  return {
+    type: types.authLogout,
   }
 }
