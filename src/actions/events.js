@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2'
 import { fetchWithToken } from '../helpers/fetch'
+import { prepareEvents } from '../helpers/prepareEvents'
 import { types } from '../types/types'
 
 export const startEventAddNew = (event) => {
@@ -24,6 +25,26 @@ export const startEventAddNew = (event) => {
     } catch (error) {
       console.log(error)
     }
+  }
+}
+
+export const startEventLoading = () => {
+  return async (dispatch) => {
+    try {
+      const resp = await fetchWithToken('events')
+      const body = await resp.json()
+      console.log(body)
+      // dispatch(eventLoaded(events))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+const eventLoaded = (events) => {
+  return {
+    type: types.eventLoaded,
+    payload: events,
   }
 }
 
