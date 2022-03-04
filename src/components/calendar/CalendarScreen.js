@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { Navbar } from '../ui/Navbar'
 import { messages } from '../../helpers/messages'
 import { CalendarEvent } from './CalendarEvent'
@@ -21,11 +20,20 @@ const localizer = momentLocalizer(moment)
 
 export const CalendarScreen = () => {
   const dispatch = useDispatch()
+  const [loading, setLoading] = useState(true)
   const { events, activeEvent } = useSelector((state) => state.calendar)
   const { uid } = useSelector((state) => state.auth)
   const [lastView, setLastView] = useState(
     localStorage.getItem('lastView') || 'month'
   )
+
+  useEffect(() => {
+    if (events) {
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000)
+    }
+  }, [events])
 
   useEffect(() => {
     dispatch(startEventLoading())
@@ -58,6 +66,14 @@ export const CalendarScreen = () => {
     }
 
     return { style }
+  }
+
+  if (loading) {
+    return (
+      <div className="preloader-container">
+        <div className="preloader"></div>
+      </div>
+    )
   }
 
   return (
