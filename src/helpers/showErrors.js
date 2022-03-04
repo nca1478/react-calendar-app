@@ -21,3 +21,7 @@ export const showErrorStartRegister = (body) => {
     Swal.fire('Error', body.errors.password.msg, 'error')
   }
 }
+
+export const showErrorStartChecking = (body) => {
+  Swal.fire('Error', body.msc, 'error')
+}

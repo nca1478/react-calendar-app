@@ -1,6 +1,7 @@
 import { types } from '../types/types'
-import { fetchWithoutToken } from '../helpers/fetch'
+import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch'
 import {
+  showErrorStartChecking,
   showErrorStartLogin,
   showErrorStartRegister,
 } from '../helpers/showErrors'
@@ -42,6 +43,29 @@ export const startRegister = (name, email, password) => {
     } else {
       showErrorStartRegister(body)
     }
+  }
+}
+
+export const starChecking = () => {
+  return async (dispatch) => {
+    const resp = await fetchWithToken('auth/renew')
+    const body = await resp.json()
+
+    if (body.ok) {
+      localStorage.setItem('token', body.token)
+      localStorage.setItem('token-init-date', new Date().getTime())
+
+      dispatch(login({ uid: body.user.uid, name: body.user.name }))
+    } else {
+      showErrorStartChecking(body)
+      dispatch(checkingFinish())
+    }
+  }
+}
+
+export const checkingFinish = () => {
+  return {
+    type: types.authCheckingFinish,
   }
 }
 
