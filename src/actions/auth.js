@@ -4,6 +4,7 @@ import {
   showErrorStartLogin,
   showErrorStartRegister,
 } from '../helpers/showErrors'
+import { eventLogout } from './events'
 
 export const startLogin = (email, password) => {
   return async (dispatch) => {
@@ -65,6 +66,7 @@ export const startLogout = () => {
   return (dispatch) => {
     localStorage.clear()
 
+    dispatch(eventLogout())
     dispatch(logout())
   }
 }
