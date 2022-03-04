@@ -1,7 +1,6 @@
 import { types } from '../types/types'
 import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch'
 import {
-  showErrorStartChecking,
   showErrorStartLogin,
   showErrorStartRegister,
 } from '../helpers/showErrors'
@@ -57,7 +56,6 @@ export const starChecking = () => {
 
       dispatch(login({ uid: body.user.uid, name: body.user.name }))
     } else {
-      showErrorStartChecking(body)
       dispatch(checkingFinish())
     }
   }
