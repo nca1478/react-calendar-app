@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { uiCloseModal } from '../../actions/ui'
 import {
   eventClearActiveEvent,
-  eventUpdated,
   startEventAddNew,
+  startEventUpdate,
 } from '../../actions/events'
 
 const customStyles = {
@@ -112,7 +112,7 @@ export const CalendarModal = () => {
     }
 
     if (activeEvent) {
-      dispatch(eventUpdated(formValues))
+      dispatch(startEventUpdate(formValues))
     } else {
       dispatch(startEventAddNew(formValues))
     }
