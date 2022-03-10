@@ -4,18 +4,18 @@
 
 ## Features
 
-- SPA `(Simple Page Application)`.
+- SPA (Simple Page Application).
 - Calendar Screen.
 - Multi user event list.
-- `CRUD` features.
+- CRUD features.
 - Local login auth.
 - Register account form.
-- Database hosted by `MongoDB Atlas`.
-- Backend stack: `NodeJS, Express and Mongoose`.
+- Database hosted by MongoDB Atlas.
+- Backend stack: NodeJS, Express and Mongoose.
 - Public and Private Routes.
-- State Manage Component through `useState` hook.
-- State Manage App through `Redux`.
-- For handling forms, i use `useForm` custom hook.
+- State Manage Component through useState hook.
+- State Manage App through Redux.
+- For handling forms, i use useForm custom hook.
 
 ## General Information
 
@@ -50,11 +50,11 @@
 
 ## Demo
 
-- [Calendar App](https://google.com)
+- [Calendar App](https://calendar-app-njca.netlify.app/)
 
 ## Backend Repo
 
-- [Calendar Api](https://google.com)
+- [Calendar Api](https://github.com/nca1478/react-calendar-api)
 
 ## Requirements
 
