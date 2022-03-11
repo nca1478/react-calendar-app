@@ -6,7 +6,7 @@ import {
 } from '../helpers/showErrors'
 import { eventLogout } from './events'
 
-export const startLogin = (email, password) => {
+export const startLogin = (email, password, resetLogin) => {
   return async (dispatch) => {
     const resp = await fetchWithoutToken(
       'auth/login',
@@ -22,11 +22,12 @@ export const startLogin = (email, password) => {
       dispatch(login({ uid: body.user.uid, name: body.user.name }))
     } else {
       showErrorStartLogin(body)
+      resetLogin()
     }
   }
 }
 
-export const startRegister = (name, email, password) => {
+export const startRegister = (name, email, password, resetRegister) => {
   return async (dispatch) => {
     const resp = await fetchWithoutToken(
       'auth/new',
@@ -42,6 +43,7 @@ export const startRegister = (name, email, password) => {
       dispatch(login({ uid: body.user.uid, name: body.user.name }))
     } else {
       showErrorStartRegister(body)
+      resetRegister()
     }
   }
 }

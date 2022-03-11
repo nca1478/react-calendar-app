@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import Swal from 'sweetalert2'
 import { startLogin, startRegister } from '../../actions/auth'
@@ -6,24 +6,31 @@ import useForm from '../../hooks/useForm'
 import './LoginScreen.css'
 
 export const LoginScreen = () => {
+  const inputlEmail = useRef()
+  const inputrName = useRef()
   const dispatch = useDispatch()
-  const [formLoginValues, handleLoginInputChange] = useForm({
+  const [formLoginValues, handleLoginInputChange, resetLogin] = useForm({
     lEmail: '',
     lPassword: '',
   })
   const { lEmail, lPassword } = formLoginValues
 
-  const [formRegisterValues, handleRegisterInputChange] = useForm({
-    rName: '',
-    rEmail: '',
-    rPassword1: '',
-    rPassword2: '',
-  })
+  const [formRegisterValues, handleRegisterInputChange, resetRegister] =
+    useForm({
+      rName: '',
+      rEmail: '',
+      rPassword1: '',
+      rPassword2: '',
+    })
   const { rName, rEmail, rPassword1, rPassword2 } = formRegisterValues
+
+  useEffect(() => {
+    inputlEmail.current.focus()
+  }, [])
 
   const handleLogin = (e) => {
     e.preventDefault()
-    dispatch(startLogin(lEmail, lPassword))
+    dispatch(startLogin(lEmail, lPassword, resetLogin))
   }
 
   const handleRegister = (e) => {
@@ -34,7 +41,7 @@ export const LoginScreen = () => {
       return false
     }
 
-    dispatch(startRegister(rName, rEmail, rPassword1))
+    dispatch(startRegister(rName, rEmail, rPassword1, resetRegister))
   }
 
   return (
@@ -93,6 +100,7 @@ export const LoginScreen = () => {
                     placeholder="Email"
                     id="lEmail"
                     name="lEmail"
+                    ref={inputlEmail}
                     value={lEmail}
                     onChange={handleLoginInputChange}
                   />
@@ -130,6 +138,7 @@ export const LoginScreen = () => {
                     className="form-control"
                     placeholder="Name"
                     name="rName"
+                    ref={inputrName}
                     value={rName}
                     onChange={handleRegisterInputChange}
                     autoComplete="off"
