@@ -44,6 +44,16 @@ export const LoginScreen = () => {
     dispatch(startRegister(rName, rEmail, rPassword1, resetRegister))
   }
 
+  const handleResetLogin = () => {
+    resetLogin()
+    inputlEmail.current.focus()
+  }
+
+  const handleResetRegister = () => {
+    resetRegister()
+    inputrName.current.focus()
+  }
+
   return (
     <div className="row m-0 vh-100 justify-content-center align-items-center">
       <div className="col-md-5 col-sm-6">
@@ -115,8 +125,22 @@ export const LoginScreen = () => {
                     onChange={handleLoginInputChange}
                   />
                 </div>
-                <div className="mb-3">
-                  <input type="submit" className="btnSubmit" value="Login" />
+
+                {/* Buttons */}
+                <div className="mb-3 d-flex gap-1">
+                  <button type="submit" className="btn btn-primary w-100">
+                    <i className="fas fa-sign-in-alt"></i>
+                    <span> Login</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-outline-primary w-100"
+                    value="Reset"
+                    onClick={handleResetLogin}
+                  >
+                    <i className="fas fa-trash-restore"></i>
+                    <span> Reset</span>
+                  </button>
                 </div>
               </form>
             </div>
@@ -129,7 +153,7 @@ export const LoginScreen = () => {
             role="tabpanel"
             aria-labelledby="register-tab"
           >
-            <div className="login-form-2">
+            <div className="login-form-1">
               <h3>Register</h3>
               <form onSubmit={handleRegister}>
                 <div className="mb-3">
@@ -177,8 +201,20 @@ export const LoginScreen = () => {
                   />
                 </div>
 
-                <div className="mb-3">
-                  <input type="submit" className="btnSubmit" value="Register" />
+                {/* Buttons */}
+                <div className="mb-3 d-flex gap-1">
+                  <button type="submit" className="btn btn-primary w-100">
+                    <i className="far fa-save"></i>
+                    <span> Register</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-outline-primary w-100"
+                    onClick={handleResetRegister}
+                  >
+                    <i className="fas fa-trash-restore"></i>
+                    <span> Reset</span>
+                  </button>
                 </div>
               </form>
             </div>

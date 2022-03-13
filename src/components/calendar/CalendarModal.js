@@ -178,17 +178,17 @@ export const CalendarModal = () => {
           ></textarea>
         </div>
 
-        <div className="d-flex justify-content-center">
-          <button type="submit" className="btn btn-outline-primary w-50 mx-1">
+        <div className="d-flex gap-1">
+          <button type="submit" className="btn btn-primary w-100">
             <i className="far fa-save"></i>
             <span> Save</span>
           </button>
           <button
             type="button"
-            className="btn btn-primary w-50 mx-1"
+            className="btn btn-outline-primary w-100"
             onClick={closeModal}
           >
-            <i className="far fa-times-circle"></i>
+            <i className="fas fa-times"></i>
             <span> Close</span>
           </button>
         </div>
