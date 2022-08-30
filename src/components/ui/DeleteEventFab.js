@@ -12,7 +12,7 @@ export const DeletedEventFab = () => {
   return (
     <button className="btn btn-danger fab-danger" onClick={handleDelete}>
       <i className="fa-solid fa-trash"></i>
-      <span> Delete Event</span>
+      <span> Borrar Evento</span>
     </button>
   )
 }

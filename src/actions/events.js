@@ -20,7 +20,7 @@ export const startEventAddNew = (event) => {
 
         dispatch(eventAddNew(event))
       } else {
-        Swal.fire('Error', 'Error creating new event', 'error')
+        Swal.fire('Error', 'Error creando nuevo evento', 'error')
       }
     } catch (error) {
       console.log(error)

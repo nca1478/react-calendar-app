@@ -1,25 +1,24 @@
-# Calendar App
+# Calendario App
 
-`Calendar App` is a web application that allows you to save events to an on-screen calendar.
+`Calendario App` es una aplicación web que le permite guardar eventos en un calendario en pantalla.
 
 ## Features
 
-- SPA (Simple Page Application).
-- Calendar Screen.
-- Multi user event list.
-- CRUD features.
-- Local login auth.
-- Register account form.
-- Database hosted by MongoDB Atlas.
-- Backend stack: NodeJS, Express and Mongoose.
-- Public and Private Routes.
-- State Manage Component through useState hook.
-- State Manage App through Redux.
-- For handling forms, i use useForm custom hook.
+- SPA (Aplicación de Página Simple).
+- Calendario en pantalla.
+- Ingrese de eventos para multiples usuarios.
+- Tareas CRUD.
+- Autenticación Local.
+- Formulario de registro de usuarios.
+- Data alojada en MongoDB Atlas.
+- Stack Backend: NodeJS, Express and Mongoose.
+- Rutas públicas y privadas.
+- Manejo de estados con el hook useState y Redux.
+- Manejo de formularios con el hook personalizado useForm.
 
-## General Information
+## Información General
 
-- The purpose of this project is to practice the web technologies shown below.
+- El propósito de este proyecto es practicar las tecnologías web que se muestran a continuación.
 
 ## Tech Stack
 
@@ -30,7 +29,7 @@
 - ReactJS.
 - MongoDB Atlas.
 
-## React Technologies
+## Tecnologías React
 
 - [Create React App](https://create-react-app.dev/)
 - [React Big Calendar](https://www.npmjs.com/package/react-big-calendar)
@@ -39,7 +38,7 @@
 - [React Redux](https://react-redux.js.org/)
 - [React Router Dom](https://v5.reactrouter.com/web/guides/quick-start)
 
-## Development tools and other Technologies
+## Herramientas de Desarrollo
 
 - [Font Awesome 6](https://fontawesome.com/v6/search)
 - [MongoDB Atlas](https://www.mongodb.com/atlas/database)
@@ -50,25 +49,25 @@
 
 ## Demo
 
-- [Calendar App](https://calendar-app-njca.netlify.app/)
+- [Calendario App](https://calendar-app-njca.netlify.app/)
 
 ## Backend Repo
 
-- [Calendar Api](https://github.com/nca1478/react-calendar-api)
+- [Calendario Api](https://github.com/nca1478/react-calendar-api)
 
-## Requirements
+## Requerimientos
 
-- Nodejs v14 or better.
-- React 17.0.2 or better.
+- Nodejs v14 o superior.
+- React 17.0.2 o superior.
 
-## Installation
+## Instalación
 
 > npm install
 
-## Run the app
+## Ejecutar la aplicación
 
 > npm start
 
-## Enter file
+## Archivo de entrada
 
 > /src/index.js

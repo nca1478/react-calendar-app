@@ -37,7 +37,7 @@ export const LoginScreen = () => {
     e.preventDefault()
 
     if (rPassword1 !== rPassword2) {
-      Swal.fire('Error', 'Passwords must be equals', 'error')
+      Swal.fire('Error', 'Las contraseñas deben ser iguales', 'error')
       return false
     }
 
@@ -86,7 +86,7 @@ export const LoginScreen = () => {
               aria-controls="register"
               aria-selected="false"
             >
-              Register
+              Registrar
             </button>
           </li>
         </ul>
@@ -101,7 +101,7 @@ export const LoginScreen = () => {
             aria-labelledby="login-tab"
           >
             <div className="login-form-1">
-              <h3>Calendar App</h3>
+              <h3>Calendario App</h3>
               <form onSubmit={handleLogin}>
                 <div className="mb-3">
                   <input
@@ -119,7 +119,7 @@ export const LoginScreen = () => {
                   <input
                     type="password"
                     className="form-control"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                     name="lPassword"
                     value={lPassword}
                     onChange={handleLoginInputChange}
@@ -154,13 +154,13 @@ export const LoginScreen = () => {
             aria-labelledby="register-tab"
           >
             <div className="login-form-1">
-              <h3>Register</h3>
+              <h3>Registrar</h3>
               <form onSubmit={handleRegister}>
                 <div className="mb-3">
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Name"
+                    placeholder="Nombre"
                     name="rName"
                     ref={inputrName}
                     value={rName}
@@ -183,7 +183,7 @@ export const LoginScreen = () => {
                   <input
                     type="password"
                     className="form-control"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                     name="rPassword1"
                     value={rPassword1}
                     onChange={handleRegisterInputChange}
@@ -194,7 +194,7 @@ export const LoginScreen = () => {
                   <input
                     type="password"
                     className="form-control"
-                    placeholder="Confirm Password"
+                    placeholder="Confirmar Contraseña"
                     name="rPassword2"
                     value={rPassword2}
                     onChange={handleRegisterInputChange}
@@ -205,7 +205,7 @@ export const LoginScreen = () => {
                 <div className="mb-3 d-flex gap-1">
                   <button type="submit" className="btn btn-primary w-100">
                     <i className="far fa-save"></i>
-                    <span> Register</span>
+                    <span> Registrar</span>
                   </button>
                   <button
                     type="button"

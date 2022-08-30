@@ -98,7 +98,7 @@ export const CalendarModal = () => {
     if (momentStart.isSameOrAfter(momentEnd)) {
       return Swal.fire(
         'Error',
-        'End date must be greater than start date',
+        'Fecha final debe ser mayor que la fecha de inicio',
         'error'
       )
     }
@@ -131,11 +131,11 @@ export const CalendarModal = () => {
       className="modal"
       overlayClassName="modal-background"
     >
-      <h1> {!activeEvent ? 'New Event' : 'Edit Event'} </h1>
+      <h1> {!activeEvent ? 'Nuevo Evento' : 'Editar Evento'} </h1>
       <hr />
       <form className="container" onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label>Start date and time</label>
+          <label>Fecha y hora de inicio</label>
           <DateTimePicker
             onChange={handleStartDateChange}
             value={startDate}
@@ -143,7 +143,7 @@ export const CalendarModal = () => {
           />
         </div>
         <div className="mb-3">
-          <label>End date and time</label>
+          <label>Fecha y hora de fin</label>
           <DateTimePicker
             onChange={handleEndDateChange}
             value={endDate}
@@ -153,11 +153,11 @@ export const CalendarModal = () => {
         </div>
 
         <div className="mb-3">
-          <label>Title and Notes</label>
+          <label>Título y Notas</label>
           <input
             type="text"
             className={`form-control ${!titleValid && 'is-invalid'}`}
-            placeholder="Event Title"
+            placeholder="Título del Evento"
             name="title"
             autoComplete="off"
             value={title}
@@ -170,7 +170,7 @@ export const CalendarModal = () => {
           <textarea
             type="text"
             className={`form-control ${!notesValid && 'is-invalid'}`}
-            placeholder="Event Information"
+            placeholder="Información del Evento"
             rows="5"
             name="notes"
             value={notes}
@@ -181,7 +181,7 @@ export const CalendarModal = () => {
         <div className="d-flex gap-1">
           <button type="submit" className="btn btn-primary w-100">
             <i className="far fa-save"></i>
-            <span> Save</span>
+            <span> Guardar</span>
           </button>
           <button
             type="button"
@@ -189,7 +189,7 @@ export const CalendarModal = () => {
             onClick={closeModal}
           >
             <i className="fas fa-times"></i>
-            <span> Close</span>
+            <span> Cerrar</span>
           </button>
         </div>
       </form>
